@@ -1,0 +1,43 @@
+#https://stackoverflow.com/questions/57030000/how-to-dockerize-my-dotnet-core-postgresql-app#57031267
+#TODO : https://codebuckets.com/2020/08/14/applying-entity-framework-migrations-to-a-docker-container/
+version: '3.8'
+services:
+  web:
+    container_name: 'webapibasicang_container'
+    image: 'msantos2007/ng-docker'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:5028'
+    depends_on:
+      - 'postgres'
+    networks:
+      - webapibasicang-network
+    environment:
+      #- ASPNETCORE_ENVIRONMENT=Development
+      - Logging__Console__FormatterName=simple
+    restart: on-failure:5 
+  postgres:
+    ports:
+      - '5432:5432' # Remembar to use your machine ip address on connection string app;
+    container_name: webapibasicang-postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=abc123
+      # # # - POSTGRES_DB=db_basica
+      # # # volumes:
+      # - 'webapi-postgresql-volume:/var/lib/postgresql/data'
+      # # # - ./new_database-seed.sql:/docker-entrypoint-initdb.d/new_database-seed.sql
+    image: 'postgres:14.1-alpine'
+    networks:
+      - webapibasicang-network
+    
+
+volumes:
+  webapi-postgresql-volume:
+
+
+networks:
+  webapibasicang-network:
+    driver: bridge

@@ -1,0 +1,37 @@
+<rewrite>
+  <rules>
+    <clear />
+    <rule name="Redirect to https" enabled="true" stopProcessing="true">
+        <match url="(.*)" />
+        <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+            <add input="{HTTPS}" pattern="off" />
+            <add input="{HTTP_HOST}" pattern="localhost" negate="true" />
+            <add input="{HTTP_HOST}" pattern="192.168.1.200" negate="true" />
+            <add input="{HTTP_HOST}" pattern="ddns.mydomain.net" negate="true" />
+			      <!-- <add input="{REQUEST_URI}" pattern="well-known/acme-challenge" negate="true" /> -->
+            <!--<add input="{HTTP_HOST}" pattern="somee" negate="true" />-->
+        </conditions>
+        <!--<action type="Redirect" url="https://{HTTP_HOST}/{R:1}" />-->
+        <action type="Redirect" url="https://{HTTP_HOST}{REQUEST_URI}" />
+    </rule>
+    <rule name="API" stopProcessing="true">
+      <match url="api/(.*)$" ignoreCase="true" />      
+      <action type="None" />
+    </rule>
+    <rule name="Main Rule" stopProcessing="true">
+      <match url=".*" />
+      <conditions logicalGrouping="MatchAll">
+        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+        <add input="{REQUEST_URI}" matchType="Pattern" pattern="__livereload" negate="true" />
+        <add input="{REQUEST_URI}" pattern="swagger" negate="true" />     
+        <!-- //SignalR -->
+        <!-- <add input="{REQUEST_URI}" matchType="Pattern" pattern="signalr/(.*)" negate="true" /> -->
+        <!-- <add input="{URL}" pattern="bundles/(.*)" negate="true" /> -->
+        <!-- <add input="{URL}" pattern="csscntt/(.*)" negate="true" /> -->
+        <!-- <add input="{URL}" pattern="_imagery/cdmnio/(.*)" negate="true" /> -->
+      </conditions>
+      <action type="Rewrite" url="/" />
+    </rule>
+  </rules>
+</rewrite>

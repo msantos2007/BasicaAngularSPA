@@ -1,0 +1,33 @@
+<style>
+    h2
+    {
+        text-align: center;
+    }
+
+    .card-media
+    {
+            background-color: #999999;
+    }       
+</style>
+<h2>Todos os Registros | Template</h2>
+<div ng-hide="!ctrlr.AlunosLista">
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme-watch ng-repeat="aluno in ctrlr.AlunosLista">
+                <md-card-title>
+                    <md-card-title-text>
+                      <span class="md-headline">{{aluno.nome}}</span>
+                      <span class="md-subhead">{{aluno.dtNascimento | date: "dd' de 'MMMM' de 'yyyy - HH'h'mm"}}</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                      <div class="md-media-lg card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-raised md-accent">Action 1</md-button>
+                    <md-button>Action 2</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>
