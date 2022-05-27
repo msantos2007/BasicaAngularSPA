@@ -18,7 +18,13 @@
 
         function FileUpload(files)
         {
-            notificationService.displaySuccess('Mensagem disparada com sucesso!');
+            debugger;
+            fileUploadService.uploadImage(files, 'api/ImageUpload', FileUploadSuccess);
+
+            function FileUploadSuccess()
+            {
+                notificationService.displaySuccess('Mensagem disparada com sucesso!');
+            }
         }
 
         function BuscarAlunos()
