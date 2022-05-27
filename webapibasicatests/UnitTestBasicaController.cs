@@ -228,6 +228,9 @@ public class BasicaController_UnitTest
     {
         //Testa apenas depois do retorno do mediatr.send (não avalia query, command ou handler)
 
+        //Rever: Entender melhor relação entre Stub, Fake, Mock
+        //Rever: https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
+        
         //Arrange
         var _mediatorMock = new Mock<IMediator>();
         var dbContext = await DbContextInMemory();
@@ -330,8 +333,7 @@ public class BasicaController_UnitTest
         var dbContext = await DbContextInMemory();
         var uow = new UnitOfWork(dbContext);
 
-        var _mediatorMock = new Mock<IMediator>();
-        // Nome = "Ferreira",
+        var _mediatorMock = new Mock<IMediator>(); // Nome = "Ferreira",
 
         var nomeOuId_deletar = "Ferreira";
 
@@ -348,6 +350,7 @@ public class BasicaController_UnitTest
         var resultado = await _controller.RemoverAluno(nomeOuId_deletar);
         var httpResponse = resultado as ObjectResult;
 
+        //Rever: deveria ter duas assertivas?
         //Assert
         Assert.Equal(StatusCodes.Status200OK, httpResponse?.StatusCode);
         Assert.Equal("Deletado com sucesso", httpResponse?.Value);

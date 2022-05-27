@@ -102,6 +102,6 @@ namespace webapibasica.Controllers
             var commnd = new DeletarAlunoCommand(NomeOuId);
             var resposta = await _mediator.Send(commnd);
             return resposta ? Ok("Deletado com sucesso") : NotFound("Não Encontrado");
-        }
+        }   
     }
 }

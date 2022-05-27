@@ -104,23 +104,19 @@ app.UseEndpoints(endpoints =>
 app.MapControllers();
 
 
-//***
-//https://stackoverflow.com/questions/37780136/asp-core-migrate-ef-core-sql-db-on-startup
-using (var Scope = app.Services.CreateScope())
-{
-    var context = Scope.ServiceProvider.GetService<BasicaContext>();
-    context?.Database.Migrate();
-}
+// ***
+// https://stackoverflow.com/questions/37780136/asp-core-migrate-ef-core-sql-db-on-startup
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
+//// Libere este bloco
+// using (var scope = app.Services.CreateScope())
+// {
+//     var services = scope.ServiceProvider;
 
-    var context = services.GetRequiredService<BasicaContext>();
-    if (context.Database.GetPendingMigrations().Any())
-    {
-        context.Database.Migrate();
-    }
-}
+//     var context = services.GetRequiredService<BasicaContext>();
+//     if (context.Database.GetPendingMigrations().Any())
+//     {
+//         context.Database.Migrate();
+//     }
+// }
 
 app.Run();

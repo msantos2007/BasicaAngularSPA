@@ -4,15 +4,22 @@
 
     app.controller('registerCtrl', registerCtrl);
 
-    registerCtrl.$inject = ['$scope', '$rootScope', 'apiService', '$timeout'];
+    registerCtrl.$inject = ['$scope', '$rootScope', 'apiService', '$timeout', 'notificationService'];
 
-    function registerCtrl($scope, $rootScope, apiService, $timeout)
+    function registerCtrl($scope, $rootScope, apiService, $timeout, notificationService)
     {
         $scope.pageClass = 'page-register';
         $rootScope.pageClassAtual = $scope.pageClass;
         var ctrlr = this;
 
         ctrlr.BuscarAlunos = BuscarAlunos;
+        ctrlr.FileUpload = FileUpload;
+        ctrlr.Arquivos = [];
+
+        function FileUpload(files)
+        {
+            notificationService.displaySuccess('Mensagem disparada com sucesso!');
+        }
 
         function BuscarAlunos()
         {

@@ -31,3 +31,11 @@
         </div>
     </md-content>
 </div>
+<div>
+    <!-- <md-button ng-click="ctrlr.FileUpload()">Action 2</md-button> -->
+    <form action="/action_page.php">
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile" ng-file-select="ctrlr.FileUpload($files)"><br><br>
+        </div>
+    </form>      
+</div>
