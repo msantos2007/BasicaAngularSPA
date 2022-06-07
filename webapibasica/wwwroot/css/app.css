@@ -1,25 +1,25 @@
-.main_div
-{
+.main_div {
     padding: 20px;
 }
 
 /* TOAST */
-.custom_toastsuccess .md-toast-content
-{
+.custom_toastsuccess .md-toast-content {
     color: lawngreen !important;
 }
 
-.custom_toastwarning .md-toast-content
-{
+.custom_toastwarning .md-toast-content {
     background-color: darkblue !important;
 }
 
-.custom_toastinfo .md-toast-content
-{
+.custom_toastinfo .md-toast-content {
     color: lightcyan !important;
 }
 
-.custom_toasterror .md-toast-content
-{
-    background-color: orangered  !important;
+.custom_toasterror .md-toast-content {
+    background-color: orangered !important;
+}
+
+.image_fit {
+    object-fit: cover;
+    height: inherit;
 }
