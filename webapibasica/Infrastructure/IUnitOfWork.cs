@@ -7,6 +7,7 @@ namespace webapibasica.Infrastructure
     {
         IRepository<Aluno> AlunoRepository { get; }
         IRepository<AlunoNota> AlunoNotaRepository { get; }
+        IRepository<AlunoImagem> AlunoImagemRepository { get; }
 
         IAlunoCustomReposistory AlunoCustomReposistory { get; }
 

@@ -26,6 +26,10 @@ namespace webapibasica.Infrastructure
         private IRepository<AlunoNota> _alunoNotaRepository => new Repository<AlunoNota>(_context);
         public IRepository<AlunoNota> AlunoNotaRepository => _alunoNotaRepository ?? new Repository<AlunoNota>(_context);
 
+        private IRepository<AlunoImagem> _alunoImagemRepository => new Repository<AlunoImagem>(_context);
+        public IRepository<AlunoImagem> AlunoImagemRepository => _alunoImagemRepository ?? new Repository<AlunoImagem>(_context);
+
+
         //Custom Repositoty
         private IAlunoCustomReposistory _alunoCustomRepository => new AlunoCustomRepository(_context);
         public IAlunoCustomReposistory AlunoCustomReposistory => _alunoCustomRepository ?? new AlunoCustomRepository(_context);

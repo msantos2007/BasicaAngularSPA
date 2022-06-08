@@ -21,7 +21,7 @@ namespace webapibasica.Repository
 
         public async Task<IEnumerable<Aluno>> BuscaAlunos()
         {
-            var response = await _context.AlunoDbSet.Include(b => b.AlunoNotas).ToListAsync();
+            var response = await _context.AlunoDbSet.Include(b => b.AlunoNotas).Include(c => c.AlunoImagens.Where(w => w.Ativo == true)).ToListAsync();
             response = response ?? new List<Aluno>();
             List<Aluno> retorno = response ?? new List<Aluno>();
             return retorno;

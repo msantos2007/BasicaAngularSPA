@@ -10,5 +10,7 @@ namespace webapibasica.Entities
         public DateTime DtModificacao { get; set; } = new DateTime(1970, 01, 01, 0, 0, 0, DateTimeKind.Utc);
 
         public ICollection<AlunoNota> AlunoNotas { get; set; } = new List<AlunoNota>();
+
+        public ICollection<AlunoImagem> AlunoImagens { get; set; } = new List<AlunoImagem>();
     }
 }

@@ -52,6 +52,8 @@ builder.Services.AddDbContext<BasicaContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
 });
 
+builder.Services.AddSingleton<MongoContext>();
+
 // //*** 
 // builder.Services.AddScoped<IDbFactory, DbFactory>();
 // builder.Services.AddScoped<IDbFactory, DbFactory>();

@@ -2,7 +2,7 @@ using webapibasica.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace webapibasica.Data
+namespace webapibasica.Data.Configuration
 {
     public class AlunoNotaConfiguration : IEntityTypeConfiguration<AlunoNota>
     {

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using webapibasica.Data;
@@ -11,9 +12,10 @@ using webapibasica.Data;
 namespace webapibasica.Migrations
 {
     [DbContext(typeof(BasicaContext))]
-    partial class BasicaContextModelSnapshot : ModelSnapshot
+    [Migration("20220607143616_AlunoImagem_Class")]
+    partial class AlunoImagem_Class
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
