@@ -15,7 +15,8 @@
 
         ctrlr.carregarSwagger = carregarSwagger;
 
-        function carregarSwagger(href) {
+        function carregarSwagger(href)
+        {
             document.location.href = href;
         }
 

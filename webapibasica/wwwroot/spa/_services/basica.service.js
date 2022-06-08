@@ -1,11 +1,13 @@
-﻿(function (app) {
+﻿(function (app)
+{
     'use strict';
 
     app.factory('basicaService', basicaService);
 
     basicaService.$inject = ['moment', 'apiService'];
 
-    function basicaService(moment, apiService) {
+    function basicaService(moment, apiService)
+    {
 
         var service = {
             pad: pad
@@ -15,7 +17,7 @@
 
             , ServerLocalTime: ServerLocalTime  //Retorna data-hora do dispositivo, corrigido pelo deslocamento obtido por ServerLocalNow (Brasilia)
             , ServerLocalBRZT: ServerLocalBRZT  //Retorna data-hora do servidor, Brasilia
-            
+
             , ServerUTCNow: ServerUTCNow        //Requisita: Retorna ou callback data-hora servidor em UTC
             , ServerLocalNow: ServerLocalNow    //Requisita: Retorna ou callback data-hora servidor em UTC, convertido para Brasilia
 
@@ -31,7 +33,7 @@
         };
 
         var timeoffset = 0;
-        
+
         function ServerLocalTime()
         {
             //HTML: | amTimezone: 'America/Sao_Paulo'
@@ -44,7 +46,7 @@
             var date = moment().add(timeoffset, 'miliseconds');
             return moment.tz(date.utc(), "America/Sao_Paulo");
         }
-        
+
         function ServerUTCNow(callback)
         {
             apiService.get('api/financeiro/buscarDataServidorUTC/', null, buscarDataServidorUTC_success, buscarDataServidorUTC_failed, callback, null);
@@ -99,7 +101,7 @@
 
             return retorno;
         }
-        
+
         function clearSelection()
         {
             if (document.selection && document.selection.empty)
@@ -121,7 +123,7 @@
             {
                 localStorage.setItem(key, jsonObject);
             }
-            catch(e)
+            catch (e)
             {
                 return false;
             }
@@ -146,7 +148,7 @@
         function chkLocalStorage_obj(key_pattern, partial_key)
         {
             partial_key = partial_key || false;
-            
+
             var arr = []; // Array to hold the keys
             // Iterate over localStorage and insert the keys that meet the condition into arr
             if (!partial_key)
@@ -170,10 +172,10 @@
                     }
                 }
             }
-            
+
             return arr.length;
         }
-        
+
         function clrLocalStorage_obj(key_pattern, partial_key)
         {
             partial_key = partial_key || false;
@@ -182,23 +184,29 @@
             // Iterate over localStorage and insert the keys that meet the condition into arr
             if (!partial_key)
             {
-                for (let i = 0; i < localStorage.length; i++) {
-                    if (localStorage.key(i) === key_pattern) {
+                for (let i = 0; i < localStorage.length; i++)
+                {
+                    if (localStorage.key(i) === key_pattern)
+                    {
                         arr.push(localStorage.key(i));
                     }
                 }
             }
 
-            if (partial_key) {
-                for (let i = 0; i < localStorage.length; i++) {
-                    if (localStorage.key(i).includes(key_pattern)) {
+            if (partial_key)
+            {
+                for (let i = 0; i < localStorage.length; i++)
+                {
+                    if (localStorage.key(i).includes(key_pattern))
+                    {
                         arr.push(localStorage.key(i));
                     }
                 }
             }
 
             // Iterate over arr and remove the items by key
-            for (let i = 0; i < arr.length; i++) {
+            for (let i = 0; i < arr.length; i++)
+            {
                 localStorage.removeItem(arr[i]);
             }
 
@@ -206,7 +214,8 @@
             return arr.length;
         }
 
-        function pad(n, width, z) {
+        function pad(n, width, z)
+        {
             z = z || '0';
             n = n + '';
             return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
@@ -227,7 +236,7 @@
             return true;
         }
 
-        
+
 
         return service;
     }

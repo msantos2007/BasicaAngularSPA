@@ -1,4 +1,5 @@
-(function (app) {
+(function (app)
+{
     'use strict';
 
     app.factory('fileUploadService', fileUploadService);
@@ -67,13 +68,13 @@
                         notificationService.displaySuccess('Imagem salva com sucesso!');
                         if (index === $files.length - 1) callback();
                     }, function (data, status, headers, config)
-                        {
-                            notificationService.displayError(data.Message);
-                        });
+                    {
+                        notificationService.displayError(data.Message);
+                    });
                 })(i);
             }
         }
-        
+
         function removeImageGeneric(caminho_completo, callback, callback_attr)
         {
             //Antes: 'api/Account/images/remove?caminho_completo=' + caminho_completo

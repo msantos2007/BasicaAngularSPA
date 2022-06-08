@@ -1,11 +1,13 @@
-(function (app) {
+(function (app)
+{
     'use strict';
 
     app.factory('apiService', apiService);
 
     apiService.$inject = ['$http', '$location', '$rootScope'];
 
-    function apiService($http, $location, $rootScope) {
+    function apiService($http, $location, $rootScope)
+    {
         var service = {
             get: get,
             post: post
